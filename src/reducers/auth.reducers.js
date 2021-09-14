@@ -1,39 +1,45 @@
-import {authConstants} from "../actions/constants";
+import { authConstants } from '../actions/constants';
 
 const initState = {
- token: null,
- user: {
-   firstName: '',
-   lastName: '',
-   email: '',
-   picture: ''
- },
- authenticate: false,
- authenticating: false,
+  token: null,
+  user: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    picture: '',
+  },
+  authenticate: false,
+  authenticating: false,
 };
 
-function authReducer  (state = initState, action) {
+function authReducer(state = initState, action) {
   console.log(action);
   switch (action.type) {
     case authConstants.LOGIN_REQUEST:
       state = {
         ...state,
-        authenticating: true
-      }
+        authenticating: true,
+      };
       break;
 
-      case authConstants.LOGIN_SUCCESS:
-        state = {
-          ...state,
-          user: action.payload.user,
-          token: action.payload.token,
-          authenticate: true,
-          authenticating: false
-        }
-        break;
+    case authConstants.LOGIN_SUCCESS:
+      state = {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        authenticate: true,
+        authenticating: false,
+      };
+      break;
+    case authConstants.LOGOUT_REQUEST:
+      console.log("Inside Reducer");
+      state = {
+        ...initState
+      };
+      break;
 
-      default:
-        break;
+    default:
+      break;
   }
   return state;
 }
