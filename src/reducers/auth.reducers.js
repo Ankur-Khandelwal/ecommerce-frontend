@@ -31,10 +31,31 @@ function authReducer(state = initState, action) {
         authenticating: false,
       };
       break;
+
+    case authConstants.LOGIN_FAILURE:
+      state = {
+        ...state,
+        authenticating: false,
+        error: action.payload.error
+      };
+      break; 
+
     case authConstants.LOGOUT_REQUEST:
-      console.log("Inside Reducer");
+      state = {
+        ...state,
+        loading: true,
+      };
+      break;
+      case authConstants.LOGOUT_SUCCESS:
       state = {
         ...initState
+      };
+      break;
+      case authConstants.LOGOUT_FAILURE:
+      state = {
+        ...state,
+        erorr: action.payload.error,
+        loading: false
       };
       break;
 
