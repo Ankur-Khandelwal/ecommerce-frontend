@@ -10,6 +10,7 @@ function Signin(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [msg, setMsg] = useState('');
   // const [error, setError] = useState('');
   const auth = useSelector(state => state.auth);
 
@@ -30,6 +31,11 @@ function Signin(props) {
     <div>
       <Layout>
         <Container>
+        <Row style={{ marginTop: '50px' }}>
+            <Col style={{ textAlign: 'center' }}>
+              <p style={{ paddingTop: '20px' , color: 'red'}}>{msg}</p>
+            </Col>
+          </Row>
           <Row style={{marginTop: '50px'}}>
             <Col md={{span:6, offset: 3}}>
               <Form onSubmit={userSignin}>
