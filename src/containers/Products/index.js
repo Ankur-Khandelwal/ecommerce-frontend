@@ -41,6 +41,12 @@ function Products() {
 
     dispatch(addProduct(form));
     setShow(false);
+    setName('');
+    setQuantity(1);
+    setPrice('');
+    setDescription('');
+    setCategoryId('');
+    setProductPictures([]);
   };
 
   const createCategoryList = (categories, options = []) => {

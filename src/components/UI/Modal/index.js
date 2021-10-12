@@ -3,7 +3,7 @@ import {Modal, Button} from 'react-bootstrap'
 
 function NewModal(props) {
   return (
-    <Modal show={props.show} onHide={props.handleClose}>
+    <Modal show={props.show} onHide={props.handleClose} size={props.size}>
         <Modal.Header closeButton>
           <Modal.Title>{props.modalTitle}</Modal.Title>
         </Modal.Header>
@@ -11,11 +11,11 @@ function NewModal(props) {
           {props.children}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.handleClose}>
-            Close
+          <Button variant={props.mainButtonVariant} onClick={props.handleCloseAndSave}>
+          {props.mainButtonTitle}
           </Button>
-          <Button variant="primary" onClick={props.handleCloseAndSave}>
-            Save Changes
+          <Button variant="secondary" onClick={props.handleClose}>
+            {props.secondaryButtonTitle}
           </Button>
         </Modal.Footer>
       </Modal>
